@@ -2,6 +2,7 @@ package com.pp.pagkaingpinoy.dagger.modules;
 
 import com.pp.pagkaingpinoy.dagger.scopes.UserScope;
 import com.pp.pagkaingpinoy.ui.activities.dashboard.DashboardActivity;
+import com.pp.pagkaingpinoy.ui.activities.dashboard.DashboardPresenter;
 import com.pp.pagkaingpinoy.ui.activities.dashboard.NavMenuAdapter;
 import dagger.Module;
 import dagger.Provides;
@@ -26,5 +27,9 @@ import dagger.Provides;
 
   @Provides @UserScope NavMenuAdapter provideNavMenuAdapter() {
     return new NavMenuAdapter(activity);
+  }
+
+  @Provides @UserScope DashboardPresenter provideDashboardPresenter() {
+    return new DashboardPresenter(activity);
   }
 }

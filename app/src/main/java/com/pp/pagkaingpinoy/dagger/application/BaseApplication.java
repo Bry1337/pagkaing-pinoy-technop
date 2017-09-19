@@ -5,14 +5,23 @@ import android.content.Context;
 import com.pp.pagkaingpinoy.MainActivity;
 import com.pp.pagkaingpinoy.dagger.component.ApplicationComponent;
 import com.pp.pagkaingpinoy.dagger.component.DaggerApplicationComponent;
+import com.pp.pagkaingpinoy.dagger.component.activities.BreakfastActivityComponent;
 import com.pp.pagkaingpinoy.dagger.component.activities.DashboardActivityComponent;
+import com.pp.pagkaingpinoy.dagger.component.activities.DinnerActivityComponent;
+import com.pp.pagkaingpinoy.dagger.component.activities.LunchActivityComponent;
 import com.pp.pagkaingpinoy.dagger.component.activities.MainActivityComponent;
 import com.pp.pagkaingpinoy.dagger.component.activities.TableNumberComponent;
 import com.pp.pagkaingpinoy.dagger.modules.ApplicationModule;
+import com.pp.pagkaingpinoy.dagger.modules.BreakfastActivityModule;
 import com.pp.pagkaingpinoy.dagger.modules.DashboardActivityModule;
+import com.pp.pagkaingpinoy.dagger.modules.DinnerActivityModule;
+import com.pp.pagkaingpinoy.dagger.modules.LunchActivityModule;
 import com.pp.pagkaingpinoy.dagger.modules.MainActivityModule;
 import com.pp.pagkaingpinoy.dagger.modules.TableNumberModule;
+import com.pp.pagkaingpinoy.ui.activities.breakfast.BreakfastActivity;
 import com.pp.pagkaingpinoy.ui.activities.dashboard.DashboardActivity;
+import com.pp.pagkaingpinoy.ui.activities.dinner.DinnerActivity;
+import com.pp.pagkaingpinoy.ui.activities.lunch.LunchActivity;
 import com.pp.pagkaingpinoy.ui.activities.tablenumber.TableNumberActivity;
 
 /**
@@ -30,6 +39,12 @@ public class BaseApplication extends Application {
   private TableNumberComponent tableNumberComponent;
 
   private DashboardActivityComponent dashboardActivityComponent;
+
+  private BreakfastActivityComponent breakfastActivityComponent;
+
+  private LunchActivityComponent lunchActivityComponent;
+
+  private DinnerActivityComponent dinnerActivityComponent;
 
   public static BaseApplication get(Context context) {
     return (BaseApplication) context.getApplicationContext();
@@ -59,6 +74,21 @@ public class BaseApplication extends Application {
     return dashboardActivityComponent;
   }
 
+  public BreakfastActivityComponent createBreakfastActivityComponent(final BreakfastActivity breakfastActivity) {
+    breakfastActivityComponent = applicationComponent.plus(new BreakfastActivityModule(breakfastActivity));
+    return breakfastActivityComponent;
+  }
+
+  public LunchActivityComponent createLunchActivityComponent(final LunchActivity lunchActivity) {
+    lunchActivityComponent = applicationComponent.plus(new LunchActivityModule(lunchActivity));
+    return lunchActivityComponent;
+  }
+
+  public DinnerActivityComponent createDinnerComponent(final DinnerActivity dinnerActivity) {
+    dinnerActivityComponent = applicationComponent.plus(new DinnerActivityModule(dinnerActivity));
+    return dinnerActivityComponent;
+  }
+
   public void releaseMainActivityComponent() {
     mainActivityComponent = null;
   }
@@ -67,7 +97,19 @@ public class BaseApplication extends Application {
     tableNumberComponent = null;
   }
 
-  public void releaseDashboardActivityComponent(){
+  public void releaseDashboardActivityComponent() {
     dashboardActivityComponent = null;
+  }
+
+  public void releaseBreakfastActivityComponent() {
+    breakfastActivityComponent = null;
+  }
+
+  public void releaseLunchActivityComponent() {
+    lunchActivityComponent = null;
+  }
+
+  public void releaseDinnerActivityComponent() {
+    dinnerActivityComponent = null;
   }
 }

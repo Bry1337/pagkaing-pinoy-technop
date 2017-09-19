@@ -1,5 +1,6 @@
 package com.pp.pagkaingpinoy.ui.activities.dashboard;
 
+import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -11,6 +12,7 @@ import butterknife.BindView;
 import com.pp.pagkaingpinoy.R;
 import com.pp.pagkaingpinoy.dagger.application.BaseApplication;
 import com.pp.pagkaingpinoy.managers.AppActivityManager;
+import com.pp.pagkaingpinoy.managers.SharedPreferenceManager;
 import com.pp.pagkaingpinoy.ui.activities.ToolBarBaseActivity;
 import javax.inject.Inject;
 
@@ -23,11 +25,15 @@ import javax.inject.Inject;
 public class DashboardActivity extends ToolBarBaseActivity {
 
   @Inject NavMenuAdapter navMenuAdapter;
+  @Inject DashboardPresenter dashboardPresenter;
+  @Inject AppActivityManager appActivityManager;
+  @Inject SharedPreferenceManager sharedPreferenceManager;
 
   @BindView(R.id.rvNavMenu) RecyclerView rvNavMenu;
   @BindView(R.id.nav_view) NavigationView navView;
   @BindView(R.id.drawer_layout) DrawerLayout drawerLayout;
   @BindView(R.id.tvTableNumber) TextView tvTableNumber;
+  @BindView(R.id.tvBreakfastOrders) TextView tvBreakfastOrders;
 
   @Override protected void setupActivityLayout() {
     setContentView(R.layout.activity_dashboard);
@@ -77,5 +83,19 @@ public class DashboardActivity extends ToolBarBaseActivity {
   @Override protected void onDestroy() {
     super.onDestroy();
     BaseApplication.get(this).releaseDashboardActivityComponent();
+  }
+
+  @Override protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    switch (requestCode) {
+      case AppActivityManager.REQUEST_BREAKFAST:
+        if (RESULT_OK == resultCode) {
+          tvBreakfastOrders.setText(sharedPreferenceManager.getBreakfastOrder());
+        }
+        break;
+
+      default:
+        break;
+    }
   }
 }

@@ -1,0 +1,29 @@
+{
+ "items" :
+ [
+    {
+      "id": 1,
+      "name": "Hotsilog",
+      "description": "Hotsilog is a meal composed of hotdogs, garlic fried rice, and fried egg.\nIn a Filipino household, this is commonly eaten for breakfast with a condiment of banana ketchup and some pickled\nshredded papaya atchara on the side.",
+      "image_path": "android.resource://com.pp.pagkaingpinoy/drawable/hotsilog"
+    },
+   {
+     "id": 2,
+     "name": "Longsilog",
+     "description": "Longganisa is a Filipino sausage traditionally made with pork, though beef, tuna and chicken can also be used in this recipe.",
+     "image_path": "android.resource://com.pp.pagkaingpinoy/drawable/longsilog"
+   },
+   {
+     "id": 3,
+     "name": "Daing na Bangus",
+     "description": "Daing na bangus is actually marinated milkfish in vinegar, garlic and peppercorns. It is not the usual daing or sun dried salted fish which we are so accustom of calling it daing.",
+     "image_path": "android.resource://com.pp.pagkaingpinoy/drawable/daingnabangus"
+   },
+   {
+     "id": 4,
+     "name": "Tocino",
+     "description": "Pork Tocino with Salted Egg and Chopped Tomato is a dish composed of cured sweet pork with a side of salted duck egg and chopped plum tomato. It is a typical Filipino breakfast meal served with rice. This recipe suggests the use of white rice, but it will also work well with garlic fried rice.",
+     "image_path": "android.resource://com.pp.pagkaingpinoy/drawable/tocino"
+   }
+  ]
+ }

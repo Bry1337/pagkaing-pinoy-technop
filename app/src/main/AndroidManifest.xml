@@ -27,6 +27,23 @@
         android:name=".ui.activities.dashboard.DashboardActivity"
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme.NoActionBar" />
+    <activity
+        android:name=".ui.activities.breakfast.BreakfastActivity"
+        android:label="@string/breakfast"
+        android:screenOrientation="portrait"
+        android:theme="@style/AppTheme.NoActionBar" />
+
+    <activity
+        android:name=".ui.activities.lunch.LunchActivity"
+        android:label="@string/lunch"
+        android:screenOrientation="portrait"
+        android:theme="@style/AppTheme.NoActionBar" />
+
+    <activity
+        android:name=".ui.activities.dinner.DinnerActivity"
+        android:label="@string/dinner"
+        android:screenOrientation="portrait"
+        android:theme="@style/AppTheme.NoActionBar" />
   </application>
 
 </manifest>

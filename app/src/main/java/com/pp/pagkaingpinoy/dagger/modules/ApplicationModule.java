@@ -1,7 +1,10 @@
 package com.pp.pagkaingpinoy.dagger.modules;
 
 import android.app.Application;
+import android.content.Context;
 import com.pp.pagkaingpinoy.managers.AppActivityManager;
+import com.pp.pagkaingpinoy.managers.SharedPreferenceKeys;
+import com.pp.pagkaingpinoy.managers.SharedPreferenceManager;
 import dagger.Module;
 import dagger.Provides;
 import javax.inject.Singleton;
@@ -26,5 +29,11 @@ import javax.inject.Singleton;
 
   @Provides @Singleton AppActivityManager provideActivityManager() {
     return new AppActivityManager();
+  }
+
+  @Provides @Singleton SharedPreferenceManager provideSharedPreferenceManager() {
+    return new SharedPreferenceManager(application.getApplicationContext()
+        .getApplicationContext()
+        .getSharedPreferences(SharedPreferenceKeys.MY_PREFERENCE, Context.MODE_PRIVATE));
   }
 }
