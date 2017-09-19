@@ -26,14 +26,11 @@ public abstract class BaseActivity extends AppCompatActivity {
 
   protected abstract void injectDaggerComponent();
 
-  protected abstract void setBottomBarDefaultTab();
-
   @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setupActivityLayout();
     unbinder = ButterKnife.bind(this);
     injectDaggerComponent();
-    setBottomBarDefaultTab();
     setupToolbar();
     setupViewElements();
   }

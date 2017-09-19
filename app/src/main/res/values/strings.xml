@@ -1,3 +1,17 @@
 <resources>
   <string name="app_name">PagkaingPinoy</string>
+
+  <string name="enter_table_number">Enter Table Number</string>
+  <string name="done">Done</string>
+  <string name="your_table_number">Your Table Number:</string>
+
+  <string name="table_number_cannot_be_empty">Table number cannot be empty.</string>
+
+  <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+  <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+
+  <string name="breakfast">Breakfast</string>
+  <string name="lunch">Lunch</string>
+  <string name="dinner">Dinner</string>
+  <string name="drinks">Drinks</string>
 </resources>

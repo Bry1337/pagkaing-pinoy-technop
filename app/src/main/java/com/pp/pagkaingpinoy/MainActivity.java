@@ -32,10 +32,6 @@ public class MainActivity extends BaseActivity {
     BaseApplication.get(this).createMainActivityComponent(this).inject(this);
   }
 
-  @Override protected void setBottomBarDefaultTab() {
-
-  }
-
   @Override public void onWindowFocusChanged(boolean hasFocus) {
     super.onWindowFocusChanged(hasFocus);
     if (hasFocus && Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
@@ -53,7 +49,6 @@ public class MainActivity extends BaseActivity {
     new Handler().postDelayed(() -> {
       appActivityManager.launchTableActivity(this);
     }, 2000);
-
   }
 
   @Override protected void onDestroy() {

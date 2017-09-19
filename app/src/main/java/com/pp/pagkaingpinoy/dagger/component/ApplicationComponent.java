@@ -1,8 +1,12 @@
 package com.pp.pagkaingpinoy.dagger.component;
 
+import com.pp.pagkaingpinoy.dagger.component.activities.DashboardActivityComponent;
 import com.pp.pagkaingpinoy.dagger.component.activities.MainActivityComponent;
+import com.pp.pagkaingpinoy.dagger.component.activities.TableNumberComponent;
 import com.pp.pagkaingpinoy.dagger.modules.ApplicationModule;
+import com.pp.pagkaingpinoy.dagger.modules.DashboardActivityModule;
 import com.pp.pagkaingpinoy.dagger.modules.MainActivityModule;
+import com.pp.pagkaingpinoy.dagger.modules.TableNumberModule;
 import dagger.Component;
 import javax.inject.Singleton;
 
@@ -15,4 +19,8 @@ import javax.inject.Singleton;
 @Singleton @Component(modules = { ApplicationModule.class }) public interface ApplicationComponent {
 
   MainActivityComponent plus(MainActivityModule mainActivityModule);
+
+  TableNumberComponent plus(TableNumberModule tableNumberModule);
+
+  DashboardActivityComponent plus(DashboardActivityModule dashboardActivityModule);
 }
