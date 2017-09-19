@@ -4,14 +4,18 @@
   <string name="enter_table_number">Enter Table Number</string>
   <string name="done">Done</string>
   <string name="your_table_number">Your Table Number:</string>
+  <string name="quantity">Quantity</string>
+  <string name="add_to_order">Add to Order</string>
+  <string name="quantity_cannot_be_empty">Quantity cannot be empty.</string>
+  <string name="your_order_has_been_added">Your order has been added.</string>
 
   <string name="table_number_cannot_be_empty">Table number cannot be empty.</string>
 
   <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
   <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
 
-  <string name="breakfast">Breakfast</string>
-  <string name="lunch">Lunch</string>
-  <string name="dinner">Dinner</string>
-  <string name="drinks">Drinks</string>
+  <string name="breakfast">Breakfast Menu</string>
+  <string name="lunch">Lunch Menu</string>
+  <string name="dinner">Dinner Menu</string>
+  <string name="drinks">Drinks Menu</string>
 </resources>
