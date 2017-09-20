@@ -22,16 +22,24 @@ public class BreakfastPresenter implements OnSingleItemClickListener {
 
   private final BreakfastActivity activity;
 
-  private StringBuilder stringBuilder = new StringBuilder();
+  private StringBuilder stringBuilder;
+  private int totalPrice;
 
   public BreakfastPresenter(BreakfastActivity activity) {
     this.activity = activity;
+    this.stringBuilder = new StringBuilder();
+    this.totalPrice = 0;
   }
 
   @Override public void onSingleItemClick(Object object) {
     Menu menu = (Menu) object;
+    processBreakFastOrder(menu);
+  }
+
+  private void processBreakFastOrder(Menu menu) {
     if (menu != null) {
       stringBuilder.append(String.format("%s %s%s", menu.getQuantity(), menu.getName(), "\n"));
+      totalPrice = totalPrice + (Integer.parseInt(menu.getPrice()) * Integer.parseInt(menu.getQuantity()));
     }
   }
 
@@ -65,5 +73,9 @@ public class BreakfastPresenter implements OnSingleItemClickListener {
 
   public StringBuilder getStringBuilder() {
     return stringBuilder;
+  }
+
+  public int getTotalPrice() {
+    return totalPrice;
   }
 }

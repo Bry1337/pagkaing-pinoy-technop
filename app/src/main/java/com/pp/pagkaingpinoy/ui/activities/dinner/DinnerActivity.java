@@ -5,6 +5,8 @@ import android.support.v7.widget.RecyclerView;
 import butterknife.BindView;
 import com.pp.pagkaingpinoy.R;
 import com.pp.pagkaingpinoy.dagger.application.BaseApplication;
+import com.pp.pagkaingpinoy.managers.AppActivityManager;
+import com.pp.pagkaingpinoy.managers.SharedPreferenceManager;
 import com.pp.pagkaingpinoy.models.Menu;
 import com.pp.pagkaingpinoy.ui.activities.ToolBarBaseActivity;
 import java.util.List;
@@ -19,6 +21,8 @@ import javax.inject.Inject;
 public class DinnerActivity extends ToolBarBaseActivity {
 
   @Inject DinnerPresenter presenter;
+  @Inject SharedPreferenceManager sharedPreferenceManager;
+  @Inject AppActivityManager appActivityManager;
 
   @BindView(R.id.rvDinner) RecyclerView rvDinner;
 
@@ -52,8 +56,22 @@ public class DinnerActivity extends ToolBarBaseActivity {
   }
 
   private void initAdapter() {
-    dinnerAdapter = new DinnerAdapter(this, breakfastList);
+    dinnerAdapter = new DinnerAdapter(this, breakfastList, presenter);
     rvDinner.setLayoutManager(new GridLayoutManager(this, 2));
     rvDinner.setAdapter(dinnerAdapter);
+  }
+
+  @Override public void onBackPressed() {
+    handleMenuBuilder();
+  }
+
+  private void handleMenuBuilder() {
+    if (presenter.getStringBuilder().length() > 0) {
+      sharedPreferenceManager.dinnerOrder(presenter.getStringBuilder());
+      sharedPreferenceManager.dinnerTotalPrice(presenter.getTotalPrice());
+      appActivityManager.returnToDashboard(this);
+    } else {
+      finish();
+    }
   }
 }

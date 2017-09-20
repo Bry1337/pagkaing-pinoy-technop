@@ -1,0 +1,33 @@
+{
+  "items" :
+  [
+    {
+      "id": 1,
+      "name": "Brazo De Mercedes",
+      "price": "50",
+      "description": "Brazo de Mercedes is a rolled soft meringue cake with sweet custard filling.",
+      "image_path": "android.resource://com.pp.pagkaingpinoy/drawable/brazodemercedes"
+    },
+    {
+      "id": 2,
+      "name": "Chiffon Cake",
+      "price": "50",
+      "description": "Vanilla Chiffon Cake is a simple light moist cake that can be decorated with your favorite holiday theme.",
+      "image_path": "android.resource://com.pp.pagkaingpinoy/drawable/chiffoncake"
+    },
+    {
+      "id": 3,
+      "name": "Food for the Gods",
+      "price": "65",
+      "description": "Food for the Gods fits you this holiday. It is a special date bar that tastes heavenly.",
+      "image_path": "android.resource://com.pp.pagkaingpinoy/drawable/foodforthegods"
+    },
+    {
+      "id": 4,
+      "name": "Peanut Brittle",
+      "price": "50",
+      "description": "Peanut Brittle is a sweet candied peanut treat. It is has a solid breakable texture that provides a nice crunch in every bite.",
+      "image_path": "android.resource://com.pp.pagkaingpinoy/drawable/peanutbrittle"
+    }
+  ]
+}

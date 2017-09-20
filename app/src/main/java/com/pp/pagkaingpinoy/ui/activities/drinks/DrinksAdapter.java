@@ -1,4 +1,4 @@
-package com.pp.pagkaingpinoy.ui.activities.breakfast;
+package com.pp.pagkaingpinoy.ui.activities.drinks;
 
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
@@ -21,28 +21,29 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * Created by bry1337 on 19/09/2017.
+ * Created by bry1337 on 20/09/2017.
  *
  * @author edwardbryan.abergas@gmail.com
  */
 
-public class BreakfastAdapter extends RecyclerView.Adapter<BreakfastAdapter.ViewHolder> {
+public class DrinksAdapter extends RecyclerView.Adapter<DrinksAdapter.ViewHolder> {
 
-  private BreakfastActivity activity;
+  private DrinksActivity activity;
   private List<Menu> breakfastList = new ArrayList<>();
   private OnSingleItemClickListener listener;
 
-  public BreakfastAdapter(BreakfastActivity activity, List<Menu> breakfastList, OnSingleItemClickListener listener) {
+  public DrinksAdapter(DrinksActivity activity, List<Menu> breakfastList, OnSingleItemClickListener listener) {
     this.activity = activity;
     this.breakfastList = breakfastList;
     this.listener = listener;
   }
 
-  @Override public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    return new ViewHolder(LayoutInflater.from(activity).inflate(R.layout.item_breakfast_cardview, parent, false));
+  @Override public DrinksAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    return new DrinksAdapter.ViewHolder(
+        LayoutInflater.from(activity).inflate(R.layout.item_breakfast_cardview, parent, false));
   }
 
-  @Override public void onBindViewHolder(ViewHolder holder, int position) {
+  @Override public void onBindViewHolder(DrinksAdapter.ViewHolder holder, int position) {
     Menu breakfast = breakfastList.get(position);
     holder.onBind(breakfast);
   }
@@ -66,12 +67,12 @@ public class BreakfastAdapter extends RecyclerView.Adapter<BreakfastAdapter.View
     }
 
     @Override public void onBind(Object object) {
-      Menu breakfast = (Menu) object;
-      displayBreakfastItem(breakfast);
+      Menu menu = (Menu) object;
+      displayDessertItem(menu);
 
       btnAddToOrder.setOnClickListener(view -> {
         if (validate()) {
-          handleAddToOrder(breakfast);
+          handleAddToOrder(menu);
         }
       });
     }
@@ -83,7 +84,7 @@ public class BreakfastAdapter extends RecyclerView.Adapter<BreakfastAdapter.View
       Toast.makeText(activity, activity.getString(R.string.your_order_has_been_added), Toast.LENGTH_SHORT).show();
     }
 
-    private void displayBreakfastItem(Menu breakfast) {
+    private void displayDessertItem(Menu breakfast) {
       if (breakfast != null) {
         Uri uri = Uri.parse(breakfast.getImagePath());
         ivFood.setImageURI(uri);

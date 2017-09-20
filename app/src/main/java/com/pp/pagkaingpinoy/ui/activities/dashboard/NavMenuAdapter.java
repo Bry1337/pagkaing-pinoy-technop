@@ -49,6 +49,7 @@ public class NavMenuAdapter extends RecyclerView.Adapter<NavMenuAdapter.ViewHold
     navMenus.add(activity.getString(R.string.lunch));
     navMenus.add(activity.getString(R.string.dinner));
     navMenus.add(activity.getString(R.string.drinks));
+    navMenus.add(activity.getString(R.string.dessert));
   }
 
   public class ViewHolder extends RecyclerView.ViewHolder implements OnBindViewListener {

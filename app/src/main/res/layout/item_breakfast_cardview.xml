@@ -45,6 +45,17 @@
       />
 
   <TextView
+      android:id="@+id/tvPrice"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/small_margin"
+      android:ellipsize="end"
+      android:focusable="false"
+      android:gravity="start"
+      android:textColor="@android:color/white"
+      />
+
+  <TextView
       android:id="@+id/tvDescription"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
@@ -83,6 +94,7 @@
         android:layout_margin="@dimen/small_margin"
         android:layout_weight="1"
         android:background="@drawable/bg_blue_stroke_semi_rounded_corner"
+        android:foreground="?android:selectableItemBackground"
         android:text="@string/add_to_order"
         android:textColor="@android:color/white"
         />

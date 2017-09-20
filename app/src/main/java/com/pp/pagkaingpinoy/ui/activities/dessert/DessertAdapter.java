@@ -1,4 +1,4 @@
-package com.pp.pagkaingpinoy.ui.activities.breakfast;
+package com.pp.pagkaingpinoy.ui.activities.dessert;
 
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
@@ -21,18 +21,18 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * Created by bry1337 on 19/09/2017.
+ * Created by bry1337 on 20/09/2017.
  *
  * @author edwardbryan.abergas@gmail.com
  */
 
-public class BreakfastAdapter extends RecyclerView.Adapter<BreakfastAdapter.ViewHolder> {
+public class DessertAdapter extends RecyclerView.Adapter<DessertAdapter.ViewHolder> {
 
-  private BreakfastActivity activity;
+  private DessertActivity activity;
   private List<Menu> breakfastList = new ArrayList<>();
   private OnSingleItemClickListener listener;
 
-  public BreakfastAdapter(BreakfastActivity activity, List<Menu> breakfastList, OnSingleItemClickListener listener) {
+  public DessertAdapter(DessertActivity activity, List<Menu> breakfastList, OnSingleItemClickListener listener) {
     this.activity = activity;
     this.breakfastList = breakfastList;
     this.listener = listener;
@@ -66,12 +66,12 @@ public class BreakfastAdapter extends RecyclerView.Adapter<BreakfastAdapter.View
     }
 
     @Override public void onBind(Object object) {
-      Menu breakfast = (Menu) object;
-      displayBreakfastItem(breakfast);
+      Menu menu = (Menu) object;
+      displayDessertItem(menu);
 
       btnAddToOrder.setOnClickListener(view -> {
         if (validate()) {
-          handleAddToOrder(breakfast);
+          handleAddToOrder(menu);
         }
       });
     }
@@ -83,7 +83,7 @@ public class BreakfastAdapter extends RecyclerView.Adapter<BreakfastAdapter.View
       Toast.makeText(activity, activity.getString(R.string.your_order_has_been_added), Toast.LENGTH_SHORT).show();
     }
 
-    private void displayBreakfastItem(Menu breakfast) {
+    private void displayDessertItem(Menu breakfast) {
       if (breakfast != null) {
         Uri uri = Uri.parse(breakfast.getImagePath());
         ivFood.setImageURI(uri);

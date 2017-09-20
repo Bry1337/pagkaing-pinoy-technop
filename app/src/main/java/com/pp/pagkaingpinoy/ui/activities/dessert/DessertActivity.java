@@ -1,4 +1,4 @@
-package com.pp.pagkaingpinoy.ui.activities.breakfast;
+package com.pp.pagkaingpinoy.ui.activities.dessert;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,29 +13,29 @@ import java.util.List;
 import javax.inject.Inject;
 
 /**
- * Created by bry1337 on 19/09/2017.
+ * Created by bry1337 on 20/09/2017.
  *
  * @author edwardbryan.abergas@gmail.com
  */
 
-public class BreakfastActivity extends ToolBarBaseActivity {
+public class DessertActivity extends ToolBarBaseActivity {
 
-  @Inject BreakfastPresenter presenter;
+  @Inject DessertPresenter presenter;
   @Inject SharedPreferenceManager sharedPreferenceManager;
   @Inject AppActivityManager appActivityManager;
 
-  @BindView(R.id.rvBreakfastMenu) RecyclerView rvBreakfastMenu;
+  @BindView(R.id.rvDessertMenu) RecyclerView rvDessertMenu;
 
-  private BreakfastAdapter breakfastAdapter;
-  private List<Menu> breakfastList;
+  private DessertAdapter dessertAdapter;
+  private List<Menu> dessertList;
 
   @Override protected void setupActivityLayout() {
-    setContentView(R.layout.activity_breakfast);
+    setContentView(R.layout.activity_dessert);
   }
 
   @Override protected void setupViewElements() {
-    presenter.initBreakfastList();
-    initBreakfastMenu();
+    presenter.initDessertList();
+    initDessertList();
   }
 
   @Override protected boolean isActionBarBackButtonEnabled() {
@@ -43,32 +43,32 @@ public class BreakfastActivity extends ToolBarBaseActivity {
   }
 
   @Override protected void injectDaggerComponent() {
-    BaseApplication.get(this).createBreakfastActivityComponent(this).inject(this);
-  }
-
-  private void initBreakfastMenu() {
-    breakfastAdapter = new BreakfastAdapter(this, breakfastList, presenter);
-    rvBreakfastMenu.setLayoutManager(new GridLayoutManager(this, 2));
-    rvBreakfastMenu.setAdapter(breakfastAdapter);
-  }
-
-  public void setBreakfastList(List<Menu> breakfastList) {
-    this.breakfastList = breakfastList;
+    BaseApplication.get(this).createDessertComponent(this).inject(this);
   }
 
   @Override protected void onDestroy() {
     super.onDestroy();
-    BaseApplication.get(this).releaseBreakfastActivityComponent();
+    BaseApplication.get(this).releaseDessertComponent();
   }
 
   @Override public void onBackPressed() {
     handleMenuBuilder();
   }
 
+  public void setDessertList(List<Menu> dessertList) {
+    this.dessertList = dessertList;
+  }
+
+  private void initDessertList() {
+    dessertAdapter = new DessertAdapter(this, dessertList, presenter);
+    rvDessertMenu.setLayoutManager(new GridLayoutManager(this, 2));
+    rvDessertMenu.setAdapter(dessertAdapter);
+  }
+
   private void handleMenuBuilder() {
     if (presenter.getStringBuilder().length() > 0) {
-      sharedPreferenceManager.breakfastOrder(presenter.getStringBuilder());
-      sharedPreferenceManager.breakfastTotalPrice(presenter.getTotalPrice());
+      sharedPreferenceManager.dessertOrder(presenter.getStringBuilder());
+      sharedPreferenceManager.dessertTotalPrice(presenter.getTotalPrice());
       appActivityManager.returnToDashboard(this);
     } else {
       finish();
