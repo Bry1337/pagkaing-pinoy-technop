@@ -5,6 +5,8 @@ import android.support.v7.widget.RecyclerView;
 import butterknife.BindView;
 import com.pp.pagkaingpinoy.R;
 import com.pp.pagkaingpinoy.dagger.application.BaseApplication;
+import com.pp.pagkaingpinoy.managers.AppActivityManager;
+import com.pp.pagkaingpinoy.managers.SharedPreferenceManager;
 import com.pp.pagkaingpinoy.models.Menu;
 import com.pp.pagkaingpinoy.ui.activities.ToolBarBaseActivity;
 import java.util.List;
@@ -19,6 +21,8 @@ import javax.inject.Inject;
 public class LunchActivity extends ToolBarBaseActivity {
 
   @Inject LunchPresenter lunchPresenter;
+  @Inject AppActivityManager appActivityManager;
+  @Inject SharedPreferenceManager sharedPreferenceManager;
 
   @BindView(R.id.rvLunchMenu) RecyclerView rvLunchMenu;
 
@@ -51,9 +55,23 @@ public class LunchActivity extends ToolBarBaseActivity {
     BaseApplication.get(this).releaseLunchActivityComponent();
   }
 
-  private void initAdapter(){
-    lunchAdapter = new LunchAdapter(this, breakfastList);
+  private void initAdapter() {
+    lunchAdapter = new LunchAdapter(this, breakfastList, lunchPresenter);
     rvLunchMenu.setLayoutManager(new GridLayoutManager(this, 2));
     rvLunchMenu.setAdapter(lunchAdapter);
+  }
+
+  @Override public void onBackPressed() {
+    handleMenuBuilder();
+  }
+
+  private void handleMenuBuilder() {
+    if (lunchPresenter.getStringBuilder().length() > 0) {
+      sharedPreferenceManager.lunchOrder(lunchPresenter.getStringBuilder());
+      sharedPreferenceManager.lunchTotalPrice(lunchPresenter.getTotalPrice());
+      appActivityManager.returnToDashboard(this);
+    } else {
+      finish();
+    }
   }
 }

@@ -21,6 +21,6 @@
   <dimen name="table_number_width">150dp</dimen>
   <dimen name="table_number_height">50dp</dimen>
 
-  <dimen name="food_image_item_height">150dp</dimen>
+  <dimen name="food_image_item_height">138dp</dimen>
 
 </resources>

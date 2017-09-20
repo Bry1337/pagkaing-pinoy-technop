@@ -4,24 +4,28 @@
     {
       "id": 1,
       "name": "Chicken Curry",
+      "price": "80",
       "description": "Chicken Curry is one of my favorite chicken dishes. I have always liked how yummy it tasted and enjoy its rich and thick sauce.",
       "image_path": "android.resource://com.pp.pagkaingpinoy/drawable/chickencurry"
     },
     {
       "id": 2,
       "name": "Sous Vide Chicken Adobo",
+      "price": "70",
       "description": "Sous Vide Chicken Adobo is a version of Filipino Chicken adobo cooked using the Sous Vide method, which involves cooking food in lower (but precise) temperature.",
       "image_path": "android.resource://com.pp.pagkaingpinoy/drawable/sousvidechickenadobo"
     },
     {
       "id": 3,
       "name": "Afritadang Baboy",
+      "price": "80",
       "description": "Afritadang Baboy is a Filipino pork stew with potato and carrots.",
       "image_path": "android.resource://com.pp.pagkaingpinoy/drawable/afritadangbaboy"
     },
     {
       "id": 4,
       "name": "Pinoy Pork Menudo",
+      "price": "70",
       "description": "Menudo with ham is a special pork menudo version wherein ham, raisins, and bell peppers were added.",
       "image_path": "android.resource://com.pp.pagkaingpinoy/drawable/pinoyporkmenudo"
     }

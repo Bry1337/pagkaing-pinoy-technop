@@ -8,6 +8,15 @@
   <string name="add_to_order">Add to Order</string>
   <string name="quantity_cannot_be_empty">Quantity cannot be empty.</string>
   <string name="your_order_has_been_added">Your order has been added.</string>
+  <string name="quantity_cannot_be_zero">Quantity cannot be zero.</string>
+  <string name="remove_orders">Remove orders</string>
+  <string name="total_amount">Total Amount:</string>
+  <string name="notice">Notice</string>
+  <string name="are_you_sure">Are you sure about these orders?</string>
+  <string name="total_amount_is">Your total amount is </string>
+  <string name="yes">Yes</string>
+  <string name="cancel">Cancel</string>
+  <string name="please_select_some_order_first">Please select some order first.</string>
 
   <string name="table_number_cannot_be_empty">Table number cannot be empty.</string>
 
@@ -18,4 +27,8 @@
   <string name="lunch">Lunch Menu</string>
   <string name="dinner">Dinner Menu</string>
   <string name="drinks">Drinks Menu</string>
+  <string name="dessert">Dessert Menu</string>
+
+  <string name="success_message">Your order has been successfully placed within the queue.\n
+  Please wait until arrive. Happy eating!</string>
 </resources>

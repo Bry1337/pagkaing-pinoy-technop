@@ -1,4 +1,4 @@
-package com.pp.pagkaingpinoy.ui.activities.lunch;
+package com.pp.pagkaingpinoy.ui.activities.drinks;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -13,22 +13,23 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- * Created by bry1337 on 19/09/2017.
+ * Created by bry1337 on 20/09/2017.
  *
  * @author edwardbryan.abergas@gmail.com
  */
 
-public class LunchPresenter implements OnSingleItemClickListener {
+public class DrinksPresenter implements OnSingleItemClickListener {
 
-  private final LunchActivity activity;
+  private final DrinksActivity activity;
 
   private StringBuilder stringBuilder;
   private int totalPrice;
 
-  public LunchPresenter(LunchActivity activity) {
+  public DrinksPresenter(DrinksActivity activity) {
     this.activity = activity;
     this.stringBuilder = new StringBuilder();
     this.totalPrice = 0;
+
   }
 
   @Override public void onSingleItemClick(Object object) {
@@ -43,7 +44,7 @@ public class LunchPresenter implements OnSingleItemClickListener {
     }
   }
 
-  public void initLunchList() {
+  public void initDrinksList() {
     try {
       JSONObject jsonObject = new JSONObject(loadJSONFromAsset());
       JSONArray jsonArray = jsonObject.getJSONArray("items");
@@ -58,7 +59,7 @@ public class LunchPresenter implements OnSingleItemClickListener {
   private String loadJSONFromAsset() {
     String json;
     try {
-      InputStream is = activity.getAssets().open("lunch_menu.json");
+      InputStream is = activity.getAssets().open("drinks_menu.json");
       int size = is.available();
       byte[] buffer = new byte[size];
       is.read(buffer);

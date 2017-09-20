@@ -7,20 +7,26 @@ import com.pp.pagkaingpinoy.dagger.component.ApplicationComponent;
 import com.pp.pagkaingpinoy.dagger.component.DaggerApplicationComponent;
 import com.pp.pagkaingpinoy.dagger.component.activities.BreakfastActivityComponent;
 import com.pp.pagkaingpinoy.dagger.component.activities.DashboardActivityComponent;
+import com.pp.pagkaingpinoy.dagger.component.activities.DessertActivityComponent;
 import com.pp.pagkaingpinoy.dagger.component.activities.DinnerActivityComponent;
+import com.pp.pagkaingpinoy.dagger.component.activities.DrinksActivityComponent;
 import com.pp.pagkaingpinoy.dagger.component.activities.LunchActivityComponent;
 import com.pp.pagkaingpinoy.dagger.component.activities.MainActivityComponent;
 import com.pp.pagkaingpinoy.dagger.component.activities.TableNumberComponent;
 import com.pp.pagkaingpinoy.dagger.modules.ApplicationModule;
 import com.pp.pagkaingpinoy.dagger.modules.BreakfastActivityModule;
 import com.pp.pagkaingpinoy.dagger.modules.DashboardActivityModule;
+import com.pp.pagkaingpinoy.dagger.modules.DessertActivityModule;
 import com.pp.pagkaingpinoy.dagger.modules.DinnerActivityModule;
+import com.pp.pagkaingpinoy.dagger.modules.DrinksActivityModule;
 import com.pp.pagkaingpinoy.dagger.modules.LunchActivityModule;
 import com.pp.pagkaingpinoy.dagger.modules.MainActivityModule;
 import com.pp.pagkaingpinoy.dagger.modules.TableNumberModule;
 import com.pp.pagkaingpinoy.ui.activities.breakfast.BreakfastActivity;
 import com.pp.pagkaingpinoy.ui.activities.dashboard.DashboardActivity;
+import com.pp.pagkaingpinoy.ui.activities.dessert.DessertActivity;
 import com.pp.pagkaingpinoy.ui.activities.dinner.DinnerActivity;
+import com.pp.pagkaingpinoy.ui.activities.drinks.DrinksActivity;
 import com.pp.pagkaingpinoy.ui.activities.lunch.LunchActivity;
 import com.pp.pagkaingpinoy.ui.activities.tablenumber.TableNumberActivity;
 
@@ -45,6 +51,10 @@ public class BaseApplication extends Application {
   private LunchActivityComponent lunchActivityComponent;
 
   private DinnerActivityComponent dinnerActivityComponent;
+
+  private DessertActivityComponent dessertActivityComponent;
+
+  private DrinksActivityComponent drinksActivityComponent;
 
   public static BaseApplication get(Context context) {
     return (BaseApplication) context.getApplicationContext();
@@ -89,6 +99,16 @@ public class BaseApplication extends Application {
     return dinnerActivityComponent;
   }
 
+  public DessertActivityComponent createDessertComponent(final DessertActivity dessertActivity) {
+    dessertActivityComponent = applicationComponent.plus(new DessertActivityModule(dessertActivity));
+    return dessertActivityComponent;
+  }
+
+  public DrinksActivityComponent createDrinksComponent(final DrinksActivity drinksActivity) {
+    drinksActivityComponent = applicationComponent.plus(new DrinksActivityModule(drinksActivity));
+    return drinksActivityComponent;
+  }
+
   public void releaseMainActivityComponent() {
     mainActivityComponent = null;
   }
@@ -111,5 +131,13 @@ public class BaseApplication extends Application {
 
   public void releaseDinnerActivityComponent() {
     dinnerActivityComponent = null;
+  }
+
+  public void releaseDessertComponent() {
+    dessertActivityComponent = null;
+  }
+
+  public void releaseDrinkComponent() {
+    drinksActivityComponent = null;
   }
 }

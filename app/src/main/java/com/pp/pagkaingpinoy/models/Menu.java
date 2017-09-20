@@ -20,6 +20,8 @@ public class Menu {
 
   @SerializedName("quantity") private String quantity;
 
+  @SerializedName("price") private String price;
+
   public Menu() {
     //Intended to be empty.
   }
@@ -42,6 +44,10 @@ public class Menu {
 
   public String getQuantity() {
     return quantity;
+  }
+
+  public String getPrice() {
+    return price;
   }
 
   public void setQuantity(String quantity) {
