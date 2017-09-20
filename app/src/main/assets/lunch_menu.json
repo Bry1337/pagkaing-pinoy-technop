@@ -1,0 +1,33 @@
+{
+  "items" :
+  [
+    {
+      "id": 1,
+      "name": "Ginatang Hipon",
+      "price": "80",
+      "description": "Shrimp cooked in coconut milk is undeniably yummy, but it gets better when chili peppers are added.",
+      "image_path": "android.resource://com.pp.pagkaingpinoy/drawable/ginatanghipon"
+    },
+    {
+      "id": 2,
+      "name": "Spicy Bicol Express",
+      "price": "80",
+      "description": "It is tender, creamy, and tasty. In addition, it has that good amount of heat that can awaken my taste buds.",
+      "image_path": "android.resource://com.pp.pagkaingpinoy/drawable/spicybicolexpress"
+    },
+    {
+      "id": 3,
+      "name": "Pakbet with Lechon Kawali",
+      "price": "70",
+      "description": "This involves combining the regular ingredients for pinakbet with crispy chopped lechon kawali.",
+      "image_path": "android.resource://com.pp.pagkaingpinoy/drawable/pakbetwithlechonkawali"
+    },
+    {
+      "id": 4,
+      "name": "Beef Kare Kare",
+      "price": "80",
+      "description": "Beef Kare-Kare is a version of kare-kare or peanut stew that makes use of beef chuck, instead of the traditional oxtail.",
+      "image_path": "android.resource://com.pp.pagkaingpinoy/drawable/beefkarekare"
+    }
+  ]
+}

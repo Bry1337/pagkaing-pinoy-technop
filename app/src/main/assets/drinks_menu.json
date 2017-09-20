@@ -1,0 +1,33 @@
+{
+  "items" :
+  [
+    {
+      "id": 1,
+      "name": "Melon Juice",
+      "price": "50",
+      "description": "Melon Juice or Cantaloupe Juice is a simple and refreshing drink that you can prepare not only during summer time, but the whole year round as long as you have access to cantaloupe.",
+      "image_path": "android.resource://com.pp.pagkaingpinoy/drawable/melonjuice"
+    },
+    {
+      "id": 2,
+      "name": "Strawberry Greek Smoothie",
+      "price": "50",
+      "description": "You can tell that I’m telling the truth because I chose to enjoy smoothies over hot cocoa or tea while it is not officially spring yet here in Chicagoland.",
+      "image_path": "android.resource://com.pp.pagkaingpinoy/drawable/strawberrygreeksmoothie"
+    },
+    {
+      "id": 3,
+      "name": "Blueberry Greek Smoothie",
+      "price": "65",
+      "description": "I enjoy having blueberry smoothie for breakfast when I feel that I don’t need caffeine.",
+      "image_path": "android.resource://com.pp.pagkaingpinoy/drawable/blueberrygreeksmoothie"
+    },
+    {
+      "id": 4,
+      "name": "Cranberry Apple Juice",
+      "price": "50",
+      "description": "Cranberry juice is perfect for thanksgiving especially if you have some fresh cranberries around.",
+      "image_path": "android.resource://com.pp.pagkaingpinoy/drawable/cranberryapplejuice"
+    }
+  ]
+}
