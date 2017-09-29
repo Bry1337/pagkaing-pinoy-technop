@@ -1,6 +1,5 @@
 package com.pp.pagkaingpinoy.ui.activities.breakfast;
 
-import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import com.bumptech.glide.Glide;
 import com.pp.pagkaingpinoy.R;
 import com.pp.pagkaingpinoy.models.Menu;
 import com.pp.pagkaingpinoy.ui.utils.OnBindViewListener;
@@ -34,8 +34,8 @@ public class BreakfastAdapter extends RecyclerView.Adapter<BreakfastAdapter.View
 
   public BreakfastAdapter(BreakfastActivity activity, List<Menu> breakfastList, OnSingleItemClickListener listener) {
     this.activity = activity;
-    this.breakfastList = breakfastList;
     this.listener = listener;
+    this.breakfastList = breakfastList;
   }
 
   @Override public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -43,8 +43,10 @@ public class BreakfastAdapter extends RecyclerView.Adapter<BreakfastAdapter.View
   }
 
   @Override public void onBindViewHolder(ViewHolder holder, int position) {
-    Menu breakfast = breakfastList.get(position);
-    holder.onBind(breakfast);
+    if (breakfastList.get(position) != null) {
+      Menu breakfast = breakfastList.get(position);
+      holder.onBind(breakfast);
+    }
   }
 
   @Override public int getItemCount() {
@@ -85,11 +87,12 @@ public class BreakfastAdapter extends RecyclerView.Adapter<BreakfastAdapter.View
 
     private void displayBreakfastItem(Menu breakfast) {
       if (breakfast != null) {
-        Uri uri = Uri.parse(breakfast.getImagePath());
-        ivFood.setImageURI(uri);
+        //Uri uri = Uri.parse(breakfast.getImagePath());
+        //ivFood.setImageURI(uri);
         tvFoodName.setText(breakfast.getName());
         tvDescription.setText(breakfast.getDescription());
         tvPrice.setText(String.format("P %s", breakfast.getPrice()));
+        Glide.with(activity).load(breakfast.getImagePath()).centerCrop().crossFade().into(ivFood);
       }
     }
 

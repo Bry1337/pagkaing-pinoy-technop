@@ -28,12 +28,14 @@ public class AppActivityManager {
 
   public void launchTableActivity(Activity activity) {
     final Intent intent = new Intent(activity, TableNumberActivity.class);
+    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
     activity.startActivity(intent);
     activity.finish();
   }
 
   public void launchDashboardActivity(Activity activity, String tableNumber) {
     final Intent intent = new Intent(activity, DashboardActivity.class);
+    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
     intent.putExtra(TABLE_NUMBER, tableNumber);
     activity.startActivity(intent);
     activity.finish();
@@ -70,7 +72,7 @@ public class AppActivityManager {
     activity.finish();
   }
 
-  public void finishOrders(Activity activity){
+  public void finishOrders(Activity activity) {
     final Intent intent = new Intent(activity, SuccessActivity.class);
     activity.startActivity(intent);
     activity.finish();

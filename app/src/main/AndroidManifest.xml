@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.pp.pagkaingpinoy">
 
+  <uses-permission android:name="android.permission.INTERNET" />
+
   <application
       android:name=".dagger.application.BaseApplication"
       android:allowBackup="true"
@@ -17,12 +19,10 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
-
     <activity
         android:name=".ui.activities.tablenumber.TableNumberActivity"
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme.NoActionBar" />
-
     <activity
         android:name=".ui.activities.dashboard.DashboardActivity"
         android:screenOrientation="portrait"
@@ -32,31 +32,26 @@
         android:label="@string/breakfast"
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme.NoActionBar" />
-
     <activity
         android:name=".ui.activities.lunch.LunchActivity"
         android:label="@string/lunch"
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme.NoActionBar" />
-
     <activity
         android:name=".ui.activities.dinner.DinnerActivity"
         android:label="@string/dinner"
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme.NoActionBar" />
-
     <activity
         android:name=".ui.activities.dessert.DessertActivity"
         android:label="@string/dessert"
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme.NoActionBar" />
-
     <activity
         android:name=".ui.activities.drinks.DrinksActivity"
         android:label="@string/drinks"
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme.NoActionBar" />
-
     <activity
         android:name=".ui.activities.success.SuccessActivity"
         android:label="@string/app_name"
