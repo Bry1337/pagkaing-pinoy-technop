@@ -9,6 +9,7 @@ import com.pp.pagkaingpinoy.managers.AppActivityManager;
 import com.pp.pagkaingpinoy.managers.SharedPreferenceManager;
 import com.pp.pagkaingpinoy.models.Menu;
 import com.pp.pagkaingpinoy.ui.activities.ToolBarBaseActivity;
+import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 
@@ -34,6 +35,7 @@ public class DessertActivity extends ToolBarBaseActivity {
   }
 
   @Override protected void setupViewElements() {
+    dessertList = new ArrayList<>();
     presenter.initDessertList();
     initDessertList();
   }
@@ -56,7 +58,9 @@ public class DessertActivity extends ToolBarBaseActivity {
   }
 
   public void setDessertList(List<Menu> dessertList) {
-    this.dessertList = dessertList;
+    this.dessertList.clear();
+    this.dessertList.addAll(dessertList);
+    dessertAdapter.notifyDataSetChanged();
   }
 
   private void initDessertList() {

@@ -9,6 +9,7 @@ import com.pp.pagkaingpinoy.managers.AppActivityManager;
 import com.pp.pagkaingpinoy.managers.SharedPreferenceManager;
 import com.pp.pagkaingpinoy.models.Menu;
 import com.pp.pagkaingpinoy.ui.activities.ToolBarBaseActivity;
+import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 
@@ -27,13 +28,14 @@ public class DinnerActivity extends ToolBarBaseActivity {
   @BindView(R.id.rvDinner) RecyclerView rvDinner;
 
   private DinnerAdapter dinnerAdapter;
-  private List<Menu> breakfastList;
+  private List<Menu> dinnerList;
 
   @Override protected void setupActivityLayout() {
     setContentView(R.layout.activity_dinner);
   }
 
   @Override protected void setupViewElements() {
+    dinnerList = new ArrayList<>();
     presenter.initLunchList();
     initAdapter();
   }
@@ -46,8 +48,10 @@ public class DinnerActivity extends ToolBarBaseActivity {
     BaseApplication.get(this).createDinnerComponent(this).inject(this);
   }
 
-  public void setBreakfastList(List<Menu> breakfastList) {
-    this.breakfastList = breakfastList;
+  public void setDinnerList(List<Menu> dinnerList) {
+    this.dinnerList.clear();
+    this.dinnerList.addAll(dinnerList);
+    this.dinnerAdapter.notifyDataSetChanged();
   }
 
   @Override protected void onDestroy() {
@@ -56,7 +60,7 @@ public class DinnerActivity extends ToolBarBaseActivity {
   }
 
   private void initAdapter() {
-    dinnerAdapter = new DinnerAdapter(this, breakfastList, presenter);
+    dinnerAdapter = new DinnerAdapter(this, dinnerList, presenter);
     rvDinner.setLayoutManager(new GridLayoutManager(this, 2));
     rvDinner.setAdapter(dinnerAdapter);
   }
