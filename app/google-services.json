@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "869219370881",
+    "firebase_url": "https://pagkaingpinoy-c24dd.firebaseio.com",
+    "project_id": "pagkaingpinoy-c24dd",
+    "storage_bucket": "pagkaingpinoy-c24dd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:869219370881:android:169b85b72a29dcc3",
+        "android_client_info": {
+          "package_name": "com.pp.pagkaingpinoy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "869219370881-v3jsr781nedb9r12m9lvcb7aio1vlq6r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pp.pagkaingpinoy",
+            "certificate_hash": "3c81aed9d846741f2c1f253418f2d25c733ddd46"
+          }
+        },
+        {
+          "client_id": "869219370881-6gpr2f4n5m2h92lkfnlt4lekrep5a23n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARzbbgyTaHYbarI7UyorLhquqKqIq0tcA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "869219370881-6gpr2f4n5m2h92lkfnlt4lekrep5a23n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -9,6 +9,7 @@ import com.pp.pagkaingpinoy.managers.AppActivityManager;
 import com.pp.pagkaingpinoy.managers.SharedPreferenceManager;
 import com.pp.pagkaingpinoy.models.Menu;
 import com.pp.pagkaingpinoy.ui.activities.ToolBarBaseActivity;
+import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 
@@ -27,13 +28,14 @@ public class DrinksActivity extends ToolBarBaseActivity {
   @BindView(R.id.rvDrinks) RecyclerView rvDrinks;
 
   private DrinksAdapter dinnerAdapter;
-  private List<Menu> breakfastList;
+  private List<Menu> drinksList;
 
   @Override protected void setupActivityLayout() {
     setContentView(R.layout.activity_drinks);
   }
 
   @Override protected void setupViewElements() {
+    drinksList = new ArrayList<>();
     presenter.initDrinksList();
     initAdapter();
   }
@@ -51,12 +53,14 @@ public class DrinksActivity extends ToolBarBaseActivity {
     BaseApplication.get(this).releaseDrinkComponent();
   }
 
-  public void setBreakfastList(List<Menu> breakfastList) {
-    this.breakfastList = breakfastList;
+  public void setDrinksList(List<Menu> drinksList) {
+    this.drinksList.clear();
+    this.drinksList.addAll(drinksList);
+    dinnerAdapter.notifyDataSetChanged();
   }
 
   private void initAdapter() {
-    dinnerAdapter = new DrinksAdapter(this, breakfastList, presenter);
+    dinnerAdapter = new DrinksAdapter(this, drinksList, presenter);
     rvDrinks.setLayoutManager(new GridLayoutManager(this, 2));
     rvDrinks.setAdapter(dinnerAdapter);
   }

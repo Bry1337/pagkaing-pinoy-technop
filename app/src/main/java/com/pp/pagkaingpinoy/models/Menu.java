@@ -1,6 +1,7 @@
 package com.pp.pagkaingpinoy.models;
 
 import com.google.gson.annotations.SerializedName;
+import java.util.HashMap;
 
 /**
  * Created by bry1337 on 19/09/2017.
@@ -8,9 +9,9 @@ import com.google.gson.annotations.SerializedName;
  * @author edwardbryan.abergas@gmail.com
  */
 
-public class Menu {
+public class Menu extends HashMap<String, Object> {
 
-  @SerializedName("id") private int id;
+  @SerializedName("id") private long id;
 
   @SerializedName("name") private String name;
 
@@ -20,13 +21,30 @@ public class Menu {
 
   @SerializedName("quantity") private String quantity;
 
-  @SerializedName("price") private String price;
+  @SerializedName("price") private long price;
 
   public Menu() {
     //Intended to be empty.
   }
 
-  public int getId() {
+  public Menu(int id, String name, String description, String imagePath, String quantity, long price) {
+    this.id = id;
+    this.name = name;
+    this.description = description;
+    this.imagePath = imagePath;
+    this.quantity = quantity;
+    this.price = price;
+  }
+
+  public Menu(HashMap<String, Object> hashMap) {
+    this.id = (long) hashMap.get("id");
+    this.name = (String) hashMap.get("name");
+    this.description = (String) hashMap.get("description");
+    this.price = (long) hashMap.get("price");
+    this.imagePath = (String) hashMap.get("image_path");
+  }
+
+  public long getId() {
     return id;
   }
 
@@ -46,7 +64,7 @@ public class Menu {
     return quantity;
   }
 
-  public String getPrice() {
+  public long getPrice() {
     return price;
   }
 

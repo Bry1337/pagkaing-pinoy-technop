@@ -9,6 +9,7 @@ import com.pp.pagkaingpinoy.managers.AppActivityManager;
 import com.pp.pagkaingpinoy.managers.SharedPreferenceManager;
 import com.pp.pagkaingpinoy.models.Menu;
 import com.pp.pagkaingpinoy.ui.activities.ToolBarBaseActivity;
+import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 
@@ -34,6 +35,7 @@ public class BreakfastActivity extends ToolBarBaseActivity {
   }
 
   @Override protected void setupViewElements() {
+    breakfastList = new ArrayList<>();
     presenter.initBreakfastList();
     initBreakfastMenu();
   }
@@ -53,7 +55,9 @@ public class BreakfastActivity extends ToolBarBaseActivity {
   }
 
   public void setBreakfastList(List<Menu> breakfastList) {
-    this.breakfastList = breakfastList;
+    this.breakfastList.clear();
+    this.breakfastList.addAll(breakfastList);
+    breakfastAdapter.notifyDataSetChanged();
   }
 
   @Override protected void onDestroy() {

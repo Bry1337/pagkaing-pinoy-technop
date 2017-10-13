@@ -1,16 +1,16 @@
 package com.pp.pagkaingpinoy.ui.activities.dinner;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.pp.pagkaingpinoy.managers.AppConstants;
 import com.pp.pagkaingpinoy.models.Menu;
 import com.pp.pagkaingpinoy.ui.utils.OnSingleItemClickListener;
-import java.io.IOException;
-import java.io.InputStream;
-import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 /**
  * Created by bry1337 on 19/09/2017.
@@ -25,7 +25,7 @@ public class DinnerPresenter implements OnSingleItemClickListener {
   private StringBuilder stringBuilder;
   private int totalPrice;
 
-  public DinnerPresenter(DinnerActivity activity){
+  public DinnerPresenter(DinnerActivity activity) {
     this.activity = activity;
     this.stringBuilder = new StringBuilder();
     this.totalPrice = 0;
@@ -39,36 +39,28 @@ public class DinnerPresenter implements OnSingleItemClickListener {
   private void processTotalPrice(Menu menu) {
     if (menu != null) {
       stringBuilder.append(String.format("%s %s%s", menu.getQuantity(), menu.getName(), "\n"));
-      totalPrice = totalPrice + (Integer.parseInt(menu.getPrice()) * Integer.parseInt(menu.getQuantity()));
+      totalPrice =
+          totalPrice + (Integer.parseInt(String.valueOf(menu.getPrice())) * Integer.parseInt(menu.getQuantity()));
     }
   }
 
   public void initLunchList() {
-    try {
-      JSONObject jsonObject = new JSONObject(loadJSONFromAsset());
-      JSONArray jsonArray = jsonObject.getJSONArray("items");
-      Type listType = new TypeToken<List<Menu>>() {
-      }.getType();
-      activity.setBreakfastList(new Gson().fromJson(jsonArray.toString(), listType));
-    } catch (JSONException e) {
-      e.printStackTrace();
-    }
-  }
+    List<Menu> menuList = new ArrayList<>();
+    DatabaseReference dinnerReference = FirebaseDatabase.getInstance().getReference().child(AppConstants.DINNER_MENU);
+    dinnerReference.addValueEventListener(new ValueEventListener() {
+      @Override public void onDataChange(DataSnapshot dataSnapshot) {
+        for (DataSnapshot snapShot : dataSnapshot.getChildren()) {
+          HashMap<String, Object> td = (HashMap<String, Object>) snapShot.getValue();
+          menuList.add(new Menu(td));
+        }
 
-  private String loadJSONFromAsset() {
-    String json;
-    try {
-      InputStream is = activity.getAssets().open("dinner_menu.json");
-      int size = is.available();
-      byte[] buffer = new byte[size];
-      is.read(buffer);
-      is.close();
-      json = new String(buffer, "UTF-8");
-    } catch (IOException ex) {
-      ex.printStackTrace();
-      return null;
-    }
-    return json;
+        activity.setDinnerList(menuList);
+      }
+
+      @Override public void onCancelled(DatabaseError databaseError) {
+
+      }
+    });
   }
 
   public StringBuilder getStringBuilder() {

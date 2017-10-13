@@ -9,6 +9,7 @@ import com.pp.pagkaingpinoy.managers.AppActivityManager;
 import com.pp.pagkaingpinoy.managers.SharedPreferenceManager;
 import com.pp.pagkaingpinoy.models.Menu;
 import com.pp.pagkaingpinoy.ui.activities.ToolBarBaseActivity;
+import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 
@@ -27,13 +28,14 @@ public class LunchActivity extends ToolBarBaseActivity {
   @BindView(R.id.rvLunchMenu) RecyclerView rvLunchMenu;
 
   private LunchAdapter lunchAdapter;
-  private List<Menu> breakfastList;
+  private List<Menu> lunchList;
 
   @Override protected void setupActivityLayout() {
     setContentView(R.layout.activity_lunch);
   }
 
   @Override protected void setupViewElements() {
+    lunchList = new ArrayList<>();
     lunchPresenter.initLunchList();
     initAdapter();
   }
@@ -46,8 +48,10 @@ public class LunchActivity extends ToolBarBaseActivity {
     BaseApplication.get(this).createLunchActivityComponent(this).inject(this);
   }
 
-  public void setBreakfastList(List<Menu> breakfastList) {
-    this.breakfastList = breakfastList;
+  public void setLunchList(List<Menu> breakfastList) {
+    this.lunchList.clear();
+    this.lunchList.addAll(breakfastList);
+    lunchAdapter.notifyDataSetChanged();
   }
 
   @Override protected void onDestroy() {
@@ -56,7 +60,7 @@ public class LunchActivity extends ToolBarBaseActivity {
   }
 
   private void initAdapter() {
-    lunchAdapter = new LunchAdapter(this, breakfastList, lunchPresenter);
+    lunchAdapter = new LunchAdapter(this, lunchList, lunchPresenter);
     rvLunchMenu.setLayoutManager(new GridLayoutManager(this, 2));
     rvLunchMenu.setAdapter(lunchAdapter);
   }
